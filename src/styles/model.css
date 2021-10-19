@@ -1,0 +1,35 @@
+.card {
+    padding:15px 20px;
+    width:95%;
+    margin: 30px auto;
+}
+
+.model-info-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    height:auto;
+
+}
+
+.form-control-label {
+    cursor: pointer;
+}
+.form-control-label-container {
+    margin: 0px !important;
+}
+
+.model-info {
+    margin:20px 20px;
+    width:100%
+}
+
+.image-container {
+    display:flex;
+}
+
+.image-container img {
+    width:80%;
+    height:auto;
+}
+

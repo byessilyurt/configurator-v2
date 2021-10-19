@@ -1,0 +1,13 @@
+
+
+.option-group-info-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    height:auto;
+}
+
+.option-group-form{
+    margin:20px 20px;
+    width:100%
+}

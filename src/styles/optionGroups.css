@@ -1,0 +1,10 @@
+.accordion-option-groups {
+    margin-bottom:20px;
+    margin-top: 20px;
+}
+
+.option-group-title {
+    margin-left: 15px !important;
+    font-weight: 600 !important;
+    text-transform: capitalize ;
+}
