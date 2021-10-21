@@ -22,9 +22,9 @@ function ModelInfoForm(props) {
       <TextField className="model-info" label="Sorting" variant="outlined" type="number" onChange={(e) => { model.sorting = e.target.value }} value={model.sorting}>
       </TextField>
       <br />
-      <TextField className="model-info" label="Standarts" rows={4} multiline variant="outlined" onChange={(e) => { model.standards = e.target.value }} value={model.standards}>
+      <TextField className="model-info" label="Standards" rows={4} multiline variant="outlined" onChange={(e) => { model.standards = e.target.value }} value={model.standards}>
       </TextField>
-      <TextField className="model-info" label="Standarts TR" rows={4} multiline variant="outlined" onChange={(e) => { model.standards_tr = e.target.value }} value={model.standards_tr}>
+      <TextField className="model-info" label="Standart Specifications" rows={4} multiline variant="outlined" onChange={(e) => { model.standards_rich = e.target.value }} value={model.standards_rich}>
       </TextField>
       <br />
       <TextField className="spec-info" label="Passengers" variant="outlined" onChange={(e) => { model.standard_spec.passengers = e.target.value }} value={model.standard_spec.passengers}>

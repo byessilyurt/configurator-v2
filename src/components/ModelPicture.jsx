@@ -31,15 +31,28 @@ function ModelPicture(props) {
   return useObserver(() => (
     <Card className="card image-container">
       <div>
-        <Typography>Picture </Typography>
+        <div style={{ width: "90%" }}>
+          <Typography style={{ float: "left" }}>Picture </Typography>
+          <button style={{ float: "right" }}>
+            <label for="upload-photo" >
+              Change Picture
+            </label>
+          </button>
+        </div>
+        <input type="file" id="upload-photo" style={{ display: "none" }} onChange={pictureChangedHandler} />
         <img src={`https://api.nimbusflorida.theonemarineturkey.com/${pictureURL}`} alt="picture">
         </img>
-        <input type="file" onChange={pictureChangedHandler} />
-        <button onClick={pictureUploadHandler}>Upload!</button>
 
       </div>
       <div>
-        <Typography >Cover </Typography>
+        <div style={{ width: "90%" }}>
+          <Typography style={{ float: "left" }}>Cover </Typography>
+          <button style={{ float: "right" }}>
+            <label for="upload-photo" >
+          Change Cover
+            </label>
+          </button>
+        </div>
         <img src={`https://api.nimbusflorida.theonemarineturkey.com/${coverURL}`} alt="cover">
         </img>
       </div>

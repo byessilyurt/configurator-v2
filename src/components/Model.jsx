@@ -16,16 +16,13 @@ export default function Model() {
   const model = modelStore.model
   const pictureURL = model.picture.url
   const coverURL = model.cover.url
-
   const fieldRef = React.useRef(null);
   React.useEffect(() => {
       fieldRef.current.scrollIntoView({
         behavior: "smooth",
       });
   }, [model]);
-
-
-
+  
   return useObserver(() => (
     <div id="Model" className="field" ref={fieldRef}>
       <SaveButton />

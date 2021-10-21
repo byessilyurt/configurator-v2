@@ -9,7 +9,6 @@ const Loading = () => {
       style={{ justifyContent: "center", alignItems: "center", position:"fixed", zIndex:1, marginLeft:"37%", marginTop:"14%"}}
     >
       <div className="loading" style={{ fontSize: 90, position:"fixed",zIndex:1, alignItems: 'center' }}>
-        <Texty>Loading...</Texty>
         <ClipLoader
           size={20}
           color={"#200954"}
