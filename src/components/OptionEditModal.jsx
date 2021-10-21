@@ -9,9 +9,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import { TextField } from '@material-ui/core';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-
-
-
 import '../styles/optionEditModal.css';
 import PriceSelect from './PriceSelect';
 import { useObserver } from 'mobx-react';
@@ -20,16 +17,13 @@ export default function OptionEditModal(props) {
   const option = props.option
   const option_group = props.option_group
   const optionInStore = option_group.options.find(el => el.id === option.id)
-
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-
   const descriptionElementRef = React.useRef(null);
   React.useEffect(() => {
     if (open) {
@@ -39,7 +33,6 @@ export default function OptionEditModal(props) {
       }
     }
   }, [open]);
-
   return useObserver(() => (
     <div>
       <IconButton aria-label="edit" onClick={handleClickOpen()}>

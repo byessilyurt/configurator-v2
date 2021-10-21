@@ -10,7 +10,6 @@ import Select from '@mui/material/Select';
 import '../styles/stepInfoForm.css';
 import { useObserver } from 'mobx-react';
 
-
 function StepInfoForm(props) {
   const step = props.step
   const model = props.model
@@ -18,8 +17,6 @@ function StepInfoForm(props) {
   const handleChange = (event) => {
     stepInStore.type = event.target.value;
   };
-
-
   return useObserver(() => (
     <div >
       <h4> {stepInStore.title} </h4>
@@ -50,6 +47,4 @@ function StepInfoForm(props) {
     </div>
   ))
 }
-
-
 export default StepInfoForm;

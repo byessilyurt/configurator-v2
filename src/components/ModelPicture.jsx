@@ -1,9 +1,8 @@
 import { useObserver } from 'mobx-react'
 import React, { useState } from 'react'
-import TextField from '@mui/material/TextField';
 import { Card, Typography } from '@material-ui/core';
 import { useModelStore } from '../modelContext';
-
+import Button from '@mui/material/Button';
 
 function ModelPicture(props) {
   const modelStore = useModelStore()
@@ -13,7 +12,6 @@ function ModelPicture(props) {
     picture: null,
     cover: null,
   })
-
   const pictureChangedHandler = (event) => {
     setUpload({ selectedFile: event.target.files[0] })
   }
@@ -27,31 +25,30 @@ function ModelPicture(props) {
     modelStore.model.picture = formData
     console.log(modelStore.model.picture)
   }
-
   return useObserver(() => (
     <Card className="card image-container">
       <div>
         <div style={{ width: "90%" }}>
           <Typography style={{ float: "left" }}>Picture </Typography>
-          <button style={{ float: "right" }}>
-            <label for="upload-photo" >
-              Change Picture
-            </label>
-          </button>
+          <label htmlFor="upload-picture" style={{float:"right"}}>
+            <input id="upload-picture" type="file" onChange={pictureChangedHandler} style={{display:"none"}} />
+            <Button variant="contained" color="inherit" component="span">
+              Upload Picture
+            </Button>
+          </label>
         </div>
-        <input type="file" id="upload-photo" style={{ display: "none" }} onChange={pictureChangedHandler} />
         <img src={`https://api.nimbusflorida.theonemarineturkey.com/${pictureURL}`} alt="picture">
         </img>
-
       </div>
       <div>
         <div style={{ width: "90%" }}>
           <Typography style={{ float: "left" }}>Cover </Typography>
-          <button style={{ float: "right" }}>
-            <label for="upload-photo" >
-          Change Cover
-            </label>
-          </button>
+          <label htmlFor="upload-cover"  style={{float:"right"}}>
+            <input id="upload-cover" type="file" style={{display:"none"}} />
+            <Button variant="contained" color="inherit" component="span">
+              Upload Cover
+            </Button>
+          </label>
         </div>
         <img src={`https://api.nimbusflorida.theonemarineturkey.com/${coverURL}`} alt="cover">
         </img>
@@ -59,5 +56,4 @@ function ModelPicture(props) {
     </Card>
   ))
 }
-
 export default ModelPicture

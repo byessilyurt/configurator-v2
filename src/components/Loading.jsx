@@ -1,5 +1,4 @@
 import React from "react";
-import Texty from "rc-texty";
 import ClipLoader from "react-spinners/PropagateLoader";
 
 const Loading = () => {
@@ -18,6 +17,4 @@ const Loading = () => {
     </div>
   );
 };
-
-
 export default Loading

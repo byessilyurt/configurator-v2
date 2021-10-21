@@ -5,7 +5,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-
 import '../styles/options.css';
 import OptionEditModal from "./OptionEditModal";
 import { useObserver } from 'mobx-react';
@@ -13,7 +12,6 @@ import { useObserver } from 'mobx-react';
 function createData(title, name, id, sorting, required, price, pictureURL, selected) {
   return { title, name, id, sorting, required, price, pictureURL, selected };
 }
-
 function Options(props) {
   const option_group = props.option_group
   let setRows = new Set()
@@ -21,7 +19,6 @@ function Options(props) {
     return (setRows.add(createData(option.title, option.name, option.id, option.sorting, option.required, option.price.usd, option.picture.url, option.selected))
     )
   })
-
   return useObserver(() => (
     <TableContainer >
       <Table className="options-table" >
@@ -54,5 +51,4 @@ function Options(props) {
     </TableContainer>
   ));
 }
-
 export default Options

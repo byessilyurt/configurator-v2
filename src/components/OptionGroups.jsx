@@ -4,7 +4,6 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
 import '../styles/optionGroups.css';
 import OptionGroupInfoForm from './OptionGroupInfoForm';
 import Options from './Options.jsx';
@@ -13,7 +12,6 @@ export default function OptionGroups(props) {
   const step = props.step
   const model = props.model
   const stepInStore = model.steps.find(el => el.id === step.id)
-
   return (
     <div>
       {step && step.option_groups.map((option_group) => {
@@ -32,14 +30,11 @@ export default function OptionGroups(props) {
                 <Options option_group={optionGroupInStore} />
               </AccordionDetails>
             </Accordion>
-
           </div>
         )
       })
       }
     </div>
-
-
   );
 }
 

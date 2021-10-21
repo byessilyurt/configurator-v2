@@ -16,7 +16,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 200;
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -48,15 +47,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
 }));
-
 function PermanentDrawer(props) {
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
   const drawer = (
     <div>
       <div className={classes.toolbar} />
@@ -69,7 +65,6 @@ function PermanentDrawer(props) {
       </List>
     </div>
   );
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -105,7 +100,4 @@ function PermanentDrawer(props) {
     </div>
   );
 }
-
-
-
 export default PermanentDrawer;

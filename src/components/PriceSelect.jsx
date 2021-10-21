@@ -1,14 +1,12 @@
 import React from 'react'
 import FormControl from '@mui/material/FormControl';
 import Select from 'react-dropdown-select';
-
 import '../styles/priceSelect.css'
 
 function PriceSelect(props) {
   const option = props.option
   const option_group = props.option_group
   const optionInStore = option_group.options.find(el => el.id === option.id)
-
   const priceOptions = [
     {option:"", disabled:true},
     {option:`Current Price: ${optionInStore.price.usd === -4 ? "Standard" : optionInStore.price.usd === undefined ? "Included" : optionInStore.price.usd}`, value:`${optionInStore.price.usd}`},
@@ -34,5 +32,4 @@ function PriceSelect(props) {
   </FormControl>
   )
 }
-
 export default PriceSelect

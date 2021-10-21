@@ -3,7 +3,6 @@ import React from 'react'
 import TextField from '@mui/material/TextField';
 import { Card, Typography } from '@material-ui/core';
 
-
 function ModelInfoForm(props) {
   const model = props.model
   return useObserver(() => (
@@ -40,5 +39,4 @@ function ModelInfoForm(props) {
     </Card>
   ))
 }
-
 export default ModelInfoForm

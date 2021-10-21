@@ -1,22 +1,17 @@
 import { Card, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
 import '../styles/models.css';
 import Model from './Model.jsx';
 import Loading from './Loading.jsx';
 import { useModelStore } from '.././modelContext';
 
-
-
 function Models() {
   const [loadingModels, setLoadingModels] = useState(false)
   const [loadingModel, setLoadingModel] = useState(false)
-
   const [models, setModels] = useState()
   const [clickedModel, setClickedModel] = useState()
   const modelStore = useModelStore()
-
   useEffect(() => {
     const axiosPosts = async () => {
       setLoadingModels(true)
@@ -26,7 +21,6 @@ function Models() {
     };
     axiosPosts();
   }, []);
-
   const getModelDetail = async (model) => {
     setLoadingModel(true)
     const response = await axios(`https://api.nimbusflorida.theonemarineturkey.com/models/byslug/${model.slug}`)
@@ -35,7 +29,6 @@ function Models() {
     setClickedModel(modelDetail)
     setLoadingModel(false)
   }
-
   return (
     <div>
       {loadingModels ? (<Loading />) : (
@@ -81,5 +74,4 @@ function Models() {
     </div>
   )
 }
-
 export default Models;

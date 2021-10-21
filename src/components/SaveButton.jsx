@@ -13,7 +13,6 @@ function SaveButton() {
     //console.log(response.data)
     // ayrıca models endpoint'ine de istek atmalı. (model info + picture, cover verileriyle)
   }
-
   return (
     <div>
       <Zoom in={true} timeout={{ enter: 500, exit: 500 }} unmountOnExit>
@@ -25,5 +24,4 @@ function SaveButton() {
     </div>
   )
 }
-
 export default SaveButton

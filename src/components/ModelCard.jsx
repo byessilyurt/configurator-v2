@@ -2,8 +2,6 @@ import React from 'react'
 import { Zoom } from '@mui/material';
 import { Fab } from '@mui/material';
 
-import '../styles/modelCard.css';
-
 function ModelCard(props) {
   const modelName = props.name
   return (
@@ -16,5 +14,4 @@ function ModelCard(props) {
     </div>
   )
 }
-
 export default ModelCard

@@ -1,19 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import Card from "@material-ui/core/Card";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import { Box } from "@material-ui/core";
-
+import { Box,Button } from "@material-ui/core";
 import StepInfoForm from './StepInfoForm';
 import OptionGroups from "./OptionGroups";
-
-
+import AddIcon from '@mui/icons-material/Add';
+import AddStepForm from './AddStepForm';
 
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <Typography
       component="div"
@@ -28,16 +26,31 @@ function TabPanel(props) {
 }
 
 export default function Steps(props) {
-  const [value, setValue] = React.useState(0);
-
+  const [value, setValue] = useState(0);
+  const [buttonActive, setButtonActive] = useState(false)
+  const buttonColor = buttonActive ? "#3f51b5" :"#fafafa"
+  const [newForm, setNewForm] = useState(false)
   function handleChange(event, newValue) {
     setValue(newValue);
   }
   const model = (props.model);
-
-
+  const buttonStyles = {
+  float:"left",
+  marginRight:"0px",
+  marginTop:"10px",
+  backgroundColor:`${buttonColor}`,
+  boxShadow:"none" ,
+  border:"0.4px solid #ccc"
+}
   return (
-    <Card className="card">
+    <Card className="card" >
+      <Button variant="contained"
+      endIcon={<AddIcon style={{color:"#3F51B5"}} />}
+      style={buttonStyles}
+      onClick={() => {setNewForm(true); setValue(null); setButtonActive(true); console.log(buttonActive)}}
+      >
+      Add Step
+      </Button>
       <Tabs
         value={value}
         onChange={handleChange}
@@ -49,7 +62,9 @@ export default function Steps(props) {
         {
           model ? model.steps.map((step) => {
             return (
-              <Tab label={step.title} />
+              <Tab label={step.title}
+              onClick={() => {setNewForm(false);setButtonActive(false)}}
+              />
             )
           })
             :
@@ -59,9 +74,9 @@ export default function Steps(props) {
               </div>
             )}
       </Tabs>
-      {model ? model.steps.map((step, index) => {
+      {newForm ? (<AddStepForm/>) :( 
+      model ? model.steps.map((step, index) => {
         return (
-
           <div key={step.id}>
             {index === value && (
               <>
@@ -78,13 +93,12 @@ export default function Steps(props) {
               </>
             )}
           </div>
-
         )
       }) : <div>
         No data yet.
       </div>
-      }
-
+      
+      )}
     </Card>
   )
 }

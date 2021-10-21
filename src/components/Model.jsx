@@ -1,5 +1,4 @@
 import React from 'react';
-
 import '../styles/model.css';
 import Steps from './Steps.jsx';
 import ModelInfoForm from './ModelInfoForm';
@@ -8,8 +7,6 @@ import ModelPicture from './ModelPicture';
 import { useModelStore } from '../modelContext';
 import { useObserver } from 'mobx-react';
 import ModelCard from './ModelCard';
-
-
 
 export default function Model() {
   const modelStore = useModelStore()
@@ -22,7 +19,6 @@ export default function Model() {
         behavior: "smooth",
       });
   }, [model]);
-  
   return useObserver(() => (
     <div id="Model" className="field" ref={fieldRef}>
       <SaveButton />

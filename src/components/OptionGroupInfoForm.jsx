@@ -6,7 +6,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
 import '../styles/optionGroupInfoForm.css';
 import { useObserver } from 'mobx-react';
 
@@ -49,6 +48,4 @@ function OptionGroupInfoForm(props) {
     </Card>
   ))
 }
-
-
 export default OptionGroupInfoForm;

@@ -3,17 +3,13 @@
     width:90%;
     margin: 30px auto;
     }
-
-
 .models-info-container{
     display: grid;
     grid-template-columns: auto auto auto auto;    
 }
-
 .models:hover {
     cursor:pointer;
 }
-
 .models {
     height: 120px;
     border: 0.3px solid #ccc;
