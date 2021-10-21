@@ -11,7 +11,7 @@ function PriceSelect(props) {
 
   const priceOptions = [
     {option:"", disabled:true},
-    {option:`Current Price: ${optionInStore.price.usd}`},
+    {option:`Current Price: ${optionInStore.price.usd === -4 ? "Standard" : optionInStore.price.usd === undefined ? "Included" : optionInStore.price.usd}`, value:`${optionInStore.price.usd}`},
     { option: "Standard", value:"standard" }, 
     { option: "Included", value:"included" }, 
     { option: "To be decided", value:"tbd"}

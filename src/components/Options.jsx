@@ -45,7 +45,7 @@ function Options(props) {
               </TableCell>
               <TableCell >{row.id}</TableCell>
               <TableCell >{row.price === -4 ? "Standart" : row.price}</TableCell>
-              <TableCell align="center" >{row.selected === true ? "✓" : ""}</TableCell>
+              <TableCell align="left" style={{paddingLeft:"30px"}} >{row.selected === true ? "✓" : ""}</TableCell>
               <TableCell ><OptionEditModal option={row} option_group={option_group} /></TableCell>
             </TableRow>
           ))}

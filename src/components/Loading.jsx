@@ -11,7 +11,7 @@ const Loading = () => {
       <div className="loading" style={{ fontSize: 90, position:"fixed",zIndex:1, alignItems: 'center' }}>
         <ClipLoader
           size={20}
-          color={"#200954"}
+          color={"#3F51B5"}
           loading={true}
         />
       </div>
