@@ -24,7 +24,6 @@ function OptionGroupInfoForm(props) {
         <TextField className="option-group-form" type="number" label="Grid Size" onChange={(e) => { option_group.grid_size = e.target.value }} value={option_group.grid_size} variant="outlined" />
         <TextField className="option-group-form" label="Has Additional" onChange={(e) => { option_group.has_additional = e.target.value }} value={option_group.has_additional} variant="outlined" />
         <TextField className="option-group-form" type="number" label="Sorting" onChange={(e) => { option_group.sorting = e.target.value }} value={option_group.sorting} variant="outlined" />
-        <TextField className="option-group-form" label="Description" onChange={(e) => { option_group.description = e.target.value }} value={option_group.description} variant="outlined" multiline rows={4} />
         <FormControl>
           <InputLabel id="type">Type</InputLabel>
           <Select
@@ -41,11 +40,11 @@ function OptionGroupInfoForm(props) {
             <MenuItem value={"picker"}>Picker</MenuItem>
           </Select>
         </FormControl>
-        <TextField className="option-group-form" label="Type" onChange={(e) => { option_group.type = e.target.value }} value={option_group.type} variant="outlined" />
         <div className="form-control-label-container">
-        <FormControlLabel className="form-control-label"  label="Required" labelPlacement="start" control={<Switch checked={option_group.required} onChange={(e,checked) => {option_group.required = e.target.checked}}/>} />
-        <FormControlLabel className="form-control-label"  label="Hide Title" labelPlacement="start" control={<Switch checked={option_group.hide_title} onChange={(e,checked) => {option_group.hide_title = e.target.checked}}/>} />
+          <FormControlLabel className="form-control-label" label="Required" labelPlacement="start" control={<Switch checked={option_group.required} onChange={(e, checked) => { option_group.required = e.target.checked }} />} />
+          <FormControlLabel className="form-control-label" label="Hide Title" labelPlacement="start" control={<Switch checked={option_group.hide_title} onChange={(e, checked) => { option_group.hide_title = e.target.checked }} />} />
         </div>
+        <TextField className="option-group-form" label="Description" onChange={(e) => { option_group.description = e.target.value }} value={option_group.description} variant="outlined" multiline rows={4} />
       </div>
     </Card>
   ))

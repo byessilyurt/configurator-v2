@@ -7,6 +7,8 @@ import SaveButton from './SaveButton';
 import ModelPicture from './ModelPicture';
 import { useModelStore } from '../modelContext';
 import { useObserver } from 'mobx-react';
+import ModelCard from './ModelCard';
+
 
 
 export default function Model() {
@@ -27,6 +29,7 @@ export default function Model() {
   return useObserver(() => (
     <div id="Model" className="field" ref={fieldRef}>
       <SaveButton />
+      <ModelCard name={model.name} />
       <ModelInfoForm model={model}/>
       <ModelPicture pictureURL={pictureURL} coverURL={coverURL} />
       <Steps model={model} />

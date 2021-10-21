@@ -1,0 +1,14 @@
+
+.price-select:hover{
+  border-color: black !important;
+}
+
+.price-select:active  {
+  border-color: #3F51B5 !important;
+  box-shadow: none !important;
+}
+
+.price-select {
+  height:52px !important;
+  border-radius: 5px !important;
+}

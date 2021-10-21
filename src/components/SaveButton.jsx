@@ -9,8 +9,9 @@ function SaveButton() {
   const modelStore = useModelStore()
   const model = modelStore.model
   const handleClick = async (model) => {
-    const response = await axios.put(`https://model.free.beeceptor.com/`, model)
+    const response = await axios.put(``, model)
     console.log(response.data)
+    // ayrıca models endpoint'ine de istek atmalı. (model info + picture, cover verileriyle)
   }
 
   return (

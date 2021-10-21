@@ -35,6 +35,7 @@ function Models() {
     setClickedModel(modelDetail)
     setLoadingModel(false)
   }
+
   return (
     <div>
       {loadingModels ? (<Loading />) : (
@@ -59,23 +60,23 @@ function Models() {
                         <div align={"center"}>
                           <img src={`https://api.nimbusflorida.theonemarineturkey.com/${model.picture.url}`} style={{ width: "90%", height: "60px" }} />
                           <div style={{ textAlign: "center", marginTop: "10px" }}>
-                             {model.name} 
+                            {model.name}
                           </div>
                         </div>
                       </TableCell>
                     )
                   })
+
                 }
               </div>
             </TableBody>
           </Table>
         </Card>
-      )}      
-      
+      )}
       {clickedModel && (
         <div>
           <Model />
-        </div>) 
+        </div>)
       }
     </div>
   )
