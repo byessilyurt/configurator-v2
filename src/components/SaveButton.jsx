@@ -8,8 +8,9 @@ import axios from 'axios';
 function SaveButton() {
   const modelStore = useModelStore()
   const model = modelStore.model
-  const handleClick = (model) => {
-    const response = axios.put("", model)
+  const handleClick = async (model) => {
+    const response = await axios.put(`https://model.free.beeceptor.com/`, model)
+    console.log(response.data)
   }
 
   return (
