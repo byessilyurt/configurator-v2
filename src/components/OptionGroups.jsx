@@ -14,7 +14,7 @@ export default function OptionGroups(props) {
   const stepInStore = model.steps.find(el => el.id === step.id)
   return (
     <div>
-      {step && step.option_groups.map((option_group) => {
+      {step.option_groups !== undefined && step.option_groups.map((option_group) => {
         const optionGroupInStore = stepInStore.option_groups.find(el=>el.id === option_group.id)
         return (
           <div>
