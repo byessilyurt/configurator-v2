@@ -1,34 +1,33 @@
 .card {
-    padding:15px 20px;
-    width:95%;
-    margin: 30px auto;
+  padding: 15px 20px;
+  width: 95%;
+  margin: 30px auto;
 }
 
-.model-info-container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    height:auto;
+.model-info-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  height: auto;
 }
 
 .form-control-label {
-    cursor: pointer;
+  cursor: pointer;
 }
 .form-control-label-container {
-    margin: 0px !important;
+  margin: 0px !important;
 }
 
 .model-info {
-    margin:20px 20px;
-    width:100%
+  margin: 20px 20px;
+  width: 100%;
 }
 
 .image-container {
-    display:flex;
+  display: flex;
 }
 
 .image-container img {
-    width:80%;
-    height:auto;
+  width: 80%;
+  height: auto;
 }
-

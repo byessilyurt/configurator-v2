@@ -1,19 +1,21 @@
-import React, {useState} from 'react';
+import { Button } from '@material-ui/core';
 import { Typography } from '@mui/material';
-import TextField from '@mui/material/TextField';
-import Switch from '@mui/material/Switch';
+import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Switch from '@mui/material/Switch';
+import TextField from '@mui/material/TextField';
+import React, { useState } from 'react';
 import OptionGroup from './OptionGroup';
-import { Button } from '@material-ui/core';
 
 function Step(props) {
   const model = props.model
   const steps = model.steps
   const [stepInfo, setStepInfo] = useState({
+    model:`${model}`,
+    id:"",
     name:"",
     title:"",
     type:"",
