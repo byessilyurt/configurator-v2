@@ -119,22 +119,7 @@ export default function OptionEditModal(props) {
               variant="outlined"
             />
             <RelatedOptions optionInStore={optionInStore} steps={model.steps} />
-            <TextField
-              label="Related Option"
-              onChange={(e) => {
-                optionInStore.related_option = e.target.value;
-              }}
-              value={optionInStore.related_option}
-              variant="outlined"
-            />
-            <TextField
-              label="Dependency"
-              onChange={(e) => {
-                optionInStore.dependency = e.target.value;
-              }}
-              value={optionInStore.dependency}
-              variant="outlined"
-            />
+            <RelatedOptions optionInStore={optionInStore} steps={model.steps} />
             <div></div>
             <div className="form-control-label-container">
               <FormControlLabel

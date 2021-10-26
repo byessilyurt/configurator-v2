@@ -5,13 +5,12 @@
 }
 .models-info-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 .models:hover {
   cursor: pointer;
 }
 .models {
-  height: 140px;
   border: 0.3px solid #ccc;
   margin: 10px;
 }

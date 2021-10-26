@@ -6,21 +6,34 @@ const RelatedOptions = (props) => {
   const optionInStore = props.optionInStore;
   const allOptionsInModel = [];
   let relatedOptionsInStore = [];
-  const getAllOptionsInModel = () => {
-    steps.map((step) => {
-      step.option_groups.map((option_group) => {
-        option_group.options.map((option) => {
-          allOptionsInModel.push(option);
+  /* FINDS RELATED OPTIONS IN A MODEL, not working. 
+  const findDefaultVal = () => {
+    if (relatedOptionsInStore) {
+      relatedOptionsInStore.map((relOp) => {
+        allOptionsInModel.find((allOp) => {
+          allOp.title === relOp.title && setDefaultVal([...defaultVal, allOp]);
         });
       });
+    }
+  };
+*/
+  const getAllOptionsInModel = () => {
+    steps.map((step) => {
+      if(step.option_groups){
+        step.option_groups.map((option_group) => {
+          option_group.options.map((option) => {
+            allOptionsInModel.push(option);
+          });
+        });
+      }
     });
   };
   const getRelatedOptionsInStore = () => {
-    if (optionInStore.related_option != null) {
+    try {
       optionInStore.related_option.options.map((option) => {
         relatedOptionsInStore.push(option);
       });
-    } else {
+    } catch {
       console.log("no related option");
     }
   };
@@ -29,15 +42,22 @@ const RelatedOptions = (props) => {
     getRelatedOptionsInStore();
     return {};
   }, []);
-  console.log(relatedOptionsInStore);
+  const handleChange = (selectedOptions) => {
+    optionInStore.related_option = {
+      options: [],
+    };
+    optionInStore.related_option.options = selectedOptions;
+  };
 
   return (
     <Select
       isMulti
+      onChange={(e) => handleChange(e)}
+      backspaceRemovesValue
       getOptionLabel={(option) => option.title}
-      getOptionValue={(option) => option.title}
+      getOptionValue={(option) => option.id}
       options={allOptionsInModel}
-      defaultValue={(allOptionsInModel[0], allOptionsInModel[5])}
+      defaultValue={"WHITE HULL"}
     />
   );
 };
