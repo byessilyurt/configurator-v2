@@ -1,6 +1,5 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Select from "react-select";
-
 
 function Dependency(props) {
   const steps = props.steps;
@@ -22,11 +21,11 @@ function Dependency(props) {
     try {
       optionInStore.dependency.options.map((option) => {
         dependentOptionsInStore.push(option);
-        optionInStore.dependency = {
-          options: [],
-        };    
       });
     } catch {
+      optionInStore.dependency = {
+        options: {},
+      };
       console.log("no dependent option");
     }
   };
@@ -42,7 +41,7 @@ function Dependency(props) {
   return (
     <Select
       isMulti
-      placeholder={'Dependent Options'}
+      placeholder={"Dependent Options"}
       onChange={(e) => handleChange(e)}
       backspaceRemovesValue
       getOptionLabel={(option) => option.title}

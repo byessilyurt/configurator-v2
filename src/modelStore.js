@@ -1,8 +1,8 @@
-export function createModelStore(){
+export function createModelStore() {
   return {
     model: [],
-    updateModel(model){
-      this.model = model
+    updateModel(model) {
+      this.model = model;
     },
-  }
+  };
 }

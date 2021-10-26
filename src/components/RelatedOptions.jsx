@@ -19,7 +19,7 @@ const RelatedOptions = (props) => {
 */
   const getAllOptionsInModel = () => {
     steps.map((step) => {
-      if(step.option_groups){
+      if (step.option_groups) {
         step.option_groups.map((option_group) => {
           option_group.options.map((option) => {
             allOptionsInModel.push(option);
@@ -32,12 +32,11 @@ const RelatedOptions = (props) => {
     try {
       optionInStore.related_option.options.map((option) => {
         relatedOptionsInStore.push(option);
-
       });
     } catch {
       optionInStore.related_option = {
-        options: [],
-      }
+        options: {},
+      };
       console.log("no related option");
     }
   };
@@ -47,7 +46,8 @@ const RelatedOptions = (props) => {
     return {};
   }, []);
   const handleChange = (selectedOptions) => {
-    if(optionInStore.related_option != null) optionInStore.related_option.options = selectedOptions;
+    if (optionInStore.related_option != null)
+      optionInStore.related_option.options = selectedOptions;
     //console.log(optionInStore.related_option.options)
     return null;
   };
@@ -57,7 +57,7 @@ const RelatedOptions = (props) => {
       isMulti
       onChange={(e) => handleChange(e)}
       backspaceRemovesValue
-      placeholder={'Related Options'}
+      placeholder={"Related Options"}
       getOptionLabel={(option) => option.title}
       getOptionValue={(option) => option.id}
       options={allOptionsInModel}

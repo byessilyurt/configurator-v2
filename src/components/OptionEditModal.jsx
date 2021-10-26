@@ -11,9 +11,9 @@ import Switch from "@mui/material/Switch";
 import { useObserver } from "mobx-react";
 import * as React from "react";
 import "../styles/optionEditModal.css";
+import Dependency from "./Dependency";
 import PriceSelect from "./PriceSelect";
 import RelatedOptions from "./RelatedOptions";
-import Dependency from "./Dependency";
 
 export default function OptionEditModal(props) {
   const model = props.model;
@@ -76,6 +76,7 @@ export default function OptionEditModal(props) {
               value={optionInStore.id}
               disabled
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               label="Title"
@@ -84,6 +85,7 @@ export default function OptionEditModal(props) {
               }}
               value={optionInStore.title}
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               label="Name"
@@ -92,6 +94,7 @@ export default function OptionEditModal(props) {
               }}
               value={optionInStore.name}
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               label="Sorting"
@@ -101,16 +104,9 @@ export default function OptionEditModal(props) {
               }}
               value={optionInStore.sorting}
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
             <PriceSelect option_group={option_group} option={option} />
-            <TextField
-              label="Additional"
-              onChange={(e) => {
-                optionInStore.additional = e.target.value;
-              }}
-              value={optionInStore.additional}
-              variant="outlined"
-            />
             <TextField
               label="Description"
               onChange={(e) => {
@@ -118,6 +114,7 @@ export default function OptionEditModal(props) {
               }}
               value={optionInStore.description}
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
             <RelatedOptions optionInStore={optionInStore} steps={model.steps} />
             <Dependency optionInStore={optionInStore} steps={model.steps} />
@@ -126,7 +123,7 @@ export default function OptionEditModal(props) {
               <FormControlLabel
                 className="form-control-label"
                 label="Required"
-                labelPlacement="start"
+                labelPlacement="top"
                 control={
                   <Switch
                     checked={optionInStore.required}
@@ -139,7 +136,7 @@ export default function OptionEditModal(props) {
               <FormControlLabel
                 className="form-control-label"
                 label="Selected"
-                labelPlacement="start"
+                labelPlacement="top"
                 control={
                   <Switch
                     checked={optionInStore.selected}
@@ -152,7 +149,7 @@ export default function OptionEditModal(props) {
               <FormControlLabel
                 className="form-control-label"
                 label="Hidden"
-                labelPlacement="start"
+                labelPlacement="top"
                 control={
                   <Switch
                     checked={optionInStore.hidden}
@@ -165,12 +162,25 @@ export default function OptionEditModal(props) {
               <FormControlLabel
                 className="form-control-label"
                 label="Image Top"
-                labelPlacement="start"
+                labelPlacement="top"
                 control={
                   <Switch
                     checked={optionInStore.image_top}
                     onChange={(e, checked) => {
                       optionInStore.image_top = e.target.checked;
+                    }}
+                  />
+                }
+              />
+              <FormControlLabel
+                className="form-control-label"
+                label="Additional"
+                labelPlacement="top"
+                control={
+                  <Switch
+                    checked={optionInStore.additional}
+                    onChange={(e, checked) => {
+                      optionInStore.additional = e.target.checked;
                     }}
                   />
                 }
