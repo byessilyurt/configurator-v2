@@ -32,8 +32,12 @@ const RelatedOptions = (props) => {
     try {
       optionInStore.related_option.options.map((option) => {
         relatedOptionsInStore.push(option);
+
       });
     } catch {
+      optionInStore.related_option = {
+        options: [],
+      }
       console.log("no related option");
     }
   };
@@ -43,10 +47,9 @@ const RelatedOptions = (props) => {
     return {};
   }, []);
   const handleChange = (selectedOptions) => {
-    optionInStore.related_option = {
-      options: [],
-    };
-    optionInStore.related_option.options = selectedOptions;
+    if(optionInStore.related_option != null) optionInStore.related_option.options = selectedOptions;
+    //console.log(optionInStore.related_option.options)
+    return null;
   };
 
   return (
@@ -54,6 +57,7 @@ const RelatedOptions = (props) => {
       isMulti
       onChange={(e) => handleChange(e)}
       backspaceRemovesValue
+      placeholder={'Related Options'}
       getOptionLabel={(option) => option.title}
       getOptionValue={(option) => option.id}
       options={allOptionsInModel}

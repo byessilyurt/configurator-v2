@@ -13,6 +13,7 @@ import * as React from "react";
 import "../styles/optionEditModal.css";
 import PriceSelect from "./PriceSelect";
 import RelatedOptions from "./RelatedOptions";
+import Dependency from "./Dependency";
 
 export default function OptionEditModal(props) {
   const model = props.model;
@@ -119,7 +120,7 @@ export default function OptionEditModal(props) {
               variant="outlined"
             />
             <RelatedOptions optionInStore={optionInStore} steps={model.steps} />
-            <RelatedOptions optionInStore={optionInStore} steps={model.steps} />
+            <Dependency optionInStore={optionInStore} steps={model.steps} />
             <div></div>
             <div className="form-control-label-container">
               <FormControlLabel
@@ -148,8 +149,6 @@ export default function OptionEditModal(props) {
                   />
                 }
               />
-            </div>
-            <div className="form-control-label-container">
               <FormControlLabel
                 className="form-control-label"
                 label="Hidden"
