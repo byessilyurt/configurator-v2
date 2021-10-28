@@ -44,8 +44,8 @@ function Options(props) {
       <Table className="options-table">
         <TableHead>
           <TableRow>
-            <TableCell>
-              {option_group.title.split(" ").map((e) => {
+            <TableCell style={{fontWeight:600, fontSize:14}}>
+              {option_group.title.toString().split(" ").map((e) => {
                 return (
                   e.toLowerCase().charAt(0).toUpperCase() +
                   e.slice(1).toLowerCase() +

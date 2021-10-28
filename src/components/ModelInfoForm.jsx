@@ -4,13 +4,16 @@ import { useObserver } from "mobx-react";
 import React from "react";
 
 function ModelInfoForm(props) {
-  const model = props.model;
+  const store = props.store;
+  const model = store.model;
+  const updateModelDetail = store.updateModelDetail;
+  const updateModelDetailOneSubfield = store.updateModelDetailOneSubfield;
+
   return useObserver(() => (
     <Card>
       <div className="card model-info-container">
         <Typography style={{ marginBottom: "20px" }}>
-          {" "}
-          <b style={{ fontSize: "16px" }}> Edit Model Info </b>{" "}
+          <b style={{ fontSize: "16px" }}> Edit Model Info </b>
         </Typography>
         <div></div>
         <div></div>
@@ -28,7 +31,7 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.slug = e.target.value;
+            updateModelDetail("slug", e.target.value);
           }}
           value={model.slug}
         ></TextField>
@@ -38,7 +41,7 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.name = e.target.value;
+            updateModelDetail("name", e.target.value);
           }}
           value={model.name}
         ></TextField>
@@ -48,7 +51,7 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.flat_name = e.target.value;
+            updateModelDetail("flat_name", e.target.value);
           }}
           value={model.flat_name}
         ></TextField>
@@ -59,7 +62,7 @@ function ModelInfoForm(props) {
           InputLabelProps={{ shrink: true }}
           type="number"
           onChange={(e) => {
-            model.sorting = e.target.value;
+            updateModelDetail("sorting", e.target.value);
           }}
           value={model.sorting}
         ></TextField>
@@ -70,7 +73,11 @@ function ModelInfoForm(props) {
           InputLabelProps={{ shrink: true }}
           type="number"
           onChange={(e) => {
-            model.starting_from.usd = e.target.value;
+            updateModelDetailOneSubfield(
+              "starting_from",
+              "usd",
+              e.target.value
+            );
           }}
           value={model.starting_from.usd}
         ></TextField>
@@ -82,7 +89,7 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standards = e.target.value;
+            updateModelDetail("standards", e.target.value);
           }}
           value={model.standards}
         ></TextField>
@@ -94,7 +101,7 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standards_rich = e.target.value;
+            updateModelDetail("standards_rich", e.target.value);
           }}
           value={model.standards_rich}
         ></TextField>
@@ -104,7 +111,7 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.prefix = e.target.value;
+            updateModelDetail("prefix", e.target.value);
           }}
           value={model.prefix}
         ></TextField>
@@ -121,7 +128,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.passengers = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "passengers",
+              e.target.value
+            );
           }}
           value={model.standard_spec.passengers}
         ></TextField>
@@ -131,7 +142,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.beam = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "beam",
+              e.target.value
+            );
           }}
           value={model.standard_spec.beam}
         ></TextField>
@@ -141,7 +156,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.draft = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "draft",
+              e.target.value
+            );
           }}
           value={model.standard_spec.draft}
         ></TextField>
@@ -151,7 +170,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.displacement = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "displacement",
+              e.target.value
+            );
           }}
           value={model.standard_spec.displacement}
         ></TextField>
@@ -161,7 +184,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.berth = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "berth",
+              e.target.value
+            );
           }}
           value={model.standard_spec.berth}
         ></TextField>
@@ -171,7 +198,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.fuel = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "fuel",
+              e.target.value
+            );
           }}
           value={model.standard_spec.fuel}
         ></TextField>
@@ -181,7 +212,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.classification = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "classification",
+              e.target.value
+            );
           }}
           value={model.standard_spec.classification}
         ></TextField>
@@ -191,7 +226,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.speed = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "speed",
+              e.target.value
+            );
           }}
           value={model.standard_spec.speed}
         ></TextField>
@@ -201,7 +240,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.range = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "range",
+              e.target.value
+            );
           }}
           value={model.standard_spec.range}
         ></TextField>
@@ -216,7 +259,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.engine1_type = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "engine1_type",
+              e.target.value
+            );
           }}
           value={model.standard_spec.engine1_type}
         ></TextField>
@@ -226,7 +273,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.engine1_propulsion = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "engine1_propulsion",
+              e.target.value
+            );
           }}
           value={model.standard_spec.engine1_propulsion}
         ></TextField>
@@ -236,7 +287,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.engine1_fueltype = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "engine1_fueltype",
+              e.target.value
+            );
           }}
           value={model.standard_spec.engine1_fueltype}
         ></TextField>
@@ -246,7 +301,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.engine1_engine = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "engine1_engine",
+              e.target.value
+            );
           }}
           value={model.standard_spec.engine1_engine}
         ></TextField>
@@ -256,7 +315,11 @@ function ModelInfoForm(props) {
           variant="outlined"
           InputLabelProps={{ shrink: true }}
           onChange={(e) => {
-            model.standard_spec.engine1_speed = e.target.value;
+            updateModelDetailOneSubfield(
+              "standard_spec",
+              "engine1_speed",
+              e.target.value
+            );
           }}
           value={model.standard_spec.engine1_speed}
         ></TextField>

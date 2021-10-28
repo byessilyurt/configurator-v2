@@ -5,26 +5,31 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Switch from "@mui/material/Switch";
 import TextField from "@mui/material/TextField";
+import { Typography } from "@material-ui/core";
 import { useObserver } from "mobx-react";
 import React from "react";
 import "../styles/stepInfoForm.css";
+import { useModelStore } from "../modelContext";
 
 function StepInfoForm(props) {
+  const modelStore = useModelStore();
+  const model = modelStore.model;
+  const updateStepDetail = modelStore.updateStepDetail;
+
   const step = props.step;
-  const model = props.model;
   const stepInStore = model.steps.find((el) => el.id === step.id);
-  const handleChange = (event) => {
-    stepInStore.type = event.target.value;
-  };
+
   return useObserver(() => (
     <div>
-      <h4> {stepInStore.title} </h4>
+      <Typography style={{ marginBottom: "20px" }}>
+        <b style={{ fontSize: "16px" }}> Edit Step Info </b>
+      </Typography>
       <div className="step-info-container">
         <TextField
           id="standard-basic"
           label="Name"
           onChange={(e) => {
-            stepInStore.name = e.target.value;
+            updateStepDetail(stepInStore, "name", e.target.value);
           }}
           value={step.name}
           variant="outlined"
@@ -33,7 +38,7 @@ function StepInfoForm(props) {
           id="standard-basic"
           label="Title"
           onChange={(e) => {
-            stepInStore.title = e.target.value;
+            updateStepDetail(stepInStore, "title", e.target.value);
           }}
           value={step.title}
           variant="outlined"
@@ -45,7 +50,9 @@ function StepInfoForm(props) {
             id="demo-simple-select-helper"
             value={stepInStore.type}
             label="Age"
-            onChange={handleChange}
+            onChange={(e) => {
+              updateStepDetail(stepInStore, "type", e.target.value);
+            }}
           >
             <MenuItem value={"Image"}>Image</MenuItem>
             <MenuItem value={"Grid"}>Grid</MenuItem>
@@ -56,7 +63,7 @@ function StepInfoForm(props) {
           label="Sorting"
           type="number"
           onChange={(e) => {
-            stepInStore.sorting = e.target.value;
+            updateStepDetail(stepInStore, "sorting", e.target.value);
           }}
           value={step.sorting}
           variant="outlined"
@@ -69,8 +76,8 @@ function StepInfoForm(props) {
             control={
               <Switch
                 checked={stepInStore.required}
-                onClick={(e, checked) => {
-                  stepInStore.required = e.target.checked;
+                onClick={(e) => {
+                  updateStepDetail(stepInStore, "required", e.target.checked);
                 }}
               />
             }
@@ -82,8 +89,12 @@ function StepInfoForm(props) {
             control={
               <Switch
                 checked={stepInStore.check_scroll}
-                onClick={(e, checked) => {
-                  stepInStore.check_scroll = e.target.checked;
+                onClick={(e) => {
+                  updateStepDetail(
+                    stepInStore,
+                    "check_scroll",
+                    e.target.checked
+                  );
                 }}
               />
             }

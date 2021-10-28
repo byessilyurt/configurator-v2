@@ -1,6 +1,6 @@
 import { Fab, Zoom } from "@mui/material";
 import React from "react";
-import '../styles/modelCard.css';
+import "../styles/modelCard.css";
 
 function ModelCard(props) {
   const modelName = props.name;
@@ -18,7 +18,7 @@ function ModelCard(props) {
             backgroundColor: "white",
             zIndex: 3000,
             top: 8,
-            left:20
+            left: 20,
           }}
         >
           Editing {modelName}

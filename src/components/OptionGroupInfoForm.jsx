@@ -8,12 +8,12 @@ import Switch from "@mui/material/Switch";
 import TextField from "@mui/material/TextField";
 import { useObserver } from "mobx-react";
 import "../styles/optionGroupInfoForm.css";
+import { useModelStore } from "../modelContext";
 
 function OptionGroupInfoForm(props) {
+  const modelStore = useModelStore();
+  const updateOptionGroupDetail = modelStore.updateOptionGroupDetail;
   const option_group = props.option_group;
-  const handleChange = (event) => {
-    option_group.type = event.target.value;
-  };
   return useObserver(() => (
     <Card
       className="card"
@@ -37,7 +37,12 @@ function OptionGroupInfoForm(props) {
           className="option-group-form"
           label="Name"
           onChange={(e) => {
-            option_group.name = e.target.value;
+            updateOptionGroupDetail(
+              option_group.step,
+              option_group,
+              "name",
+              e.target.value
+            );
           }}
           value={option_group.name}
           variant="outlined"
@@ -47,7 +52,12 @@ function OptionGroupInfoForm(props) {
           className="option-group-form"
           label="Title"
           onChange={(e) => {
-            option_group.title = e.target.value;
+            updateOptionGroupDetail(
+              option_group.step,
+              option_group,
+              "title",
+              e.target.value
+            );
           }}
           value={option_group.title}
           variant="outlined"
@@ -58,7 +68,12 @@ function OptionGroupInfoForm(props) {
           type="number"
           label="Grid Size"
           onChange={(e) => {
-            option_group.grid_size = e.target.value;
+            updateOptionGroupDetail(
+              option_group.step,
+              option_group,
+              "grid_size",
+              e.target.value
+            );
           }}
           value={option_group.grid_size}
           variant="outlined"
@@ -69,7 +84,12 @@ function OptionGroupInfoForm(props) {
           type="number"
           label="Sorting"
           onChange={(e) => {
-            option_group.sorting = e.target.value;
+            updateOptionGroupDetail(
+              option_group.step,
+              option_group,
+              "sorting",
+              e.target.value
+            );
           }}
           value={option_group.sorting}
           variant="outlined"
@@ -82,8 +102,14 @@ function OptionGroupInfoForm(props) {
             id="demo-simple-select-helper"
             value={option_group.type}
             label="Age"
-            onChange={handleChange}
-          >
+            onChange={(e) => {
+              updateOptionGroupDetail(
+                option_group.step,
+                option_group,
+                "type",
+                e.target.value
+              );
+            }}          >
             <MenuItem value={"single"}>Single</MenuItem>
             <MenuItem value={"multi"}>Multi</MenuItem>
             <MenuItem value={"singleImage"}>Single Image</MenuItem>
@@ -99,8 +125,13 @@ function OptionGroupInfoForm(props) {
             control={
               <Switch
                 checked={option_group.required}
-                onChange={(e, checked) => {
-                  option_group.required = e.target.checked;
+                onChange={(e,checked) => {
+                  updateOptionGroupDetail(
+                    option_group.step,
+                    option_group,
+                    "required",
+                    e.target.checked
+                  );
                 }}
               />
             }
@@ -112,8 +143,13 @@ function OptionGroupInfoForm(props) {
             control={
               <Switch
                 checked={option_group.hide_title}
-                onChange={(e, checked) => {
-                  option_group.hide_title = e.target.checked;
+                onChange={(e,checked) => {
+                  updateOptionGroupDetail(
+                    option_group.step,
+                    option_group,
+                    "hide_title",
+                    e.target.checked
+                  );
                 }}
               />
             }
@@ -125,8 +161,13 @@ function OptionGroupInfoForm(props) {
             control={
               <Switch
                 checked={option_group.has_additional}
-                onChange={(e, checked) => {
-                  option_group.has_additional = e.target.checked;
+                onChange={(e,checked) => {
+                  updateOptionGroupDetail(
+                    option_group.step,
+                    option_group,
+                    "has_additional",
+                    e.target.checked
+                  );
                 }}
               />
             }
@@ -136,7 +177,12 @@ function OptionGroupInfoForm(props) {
           className="option-group-form"
           label="Description"
           onChange={(e) => {
-            option_group.description = e.target.value;
+            updateOptionGroupDetail(
+              option_group.step,
+              option_group,
+              "description",
+              e.target.value
+            );
           }}
           value={option_group.description}
           variant="outlined"
@@ -149,7 +195,12 @@ function OptionGroupInfoForm(props) {
             className="option-group-form"
             label="Group Title"
             onChange={(e) => {
-              option_group.group_title = e.target.value;
+              updateOptionGroupDetail(
+                option_group.step,
+                option_group,
+                "group_title",
+                e.target.value
+              );
             }}
             value={option_group.group_title}
             variant="outlined"
@@ -162,8 +213,13 @@ function OptionGroupInfoForm(props) {
             control={
               <Switch
                 checked={option_group.show_group_title}
-                onChange={(e, checked) => {
-                  option_group.show_group_title = e.target.checked;
+                onChange={(e,checked) => {
+                  updateOptionGroupDetail(
+                    option_group.step,
+                    option_group,
+                    "show_group_title",
+                    e.target.checked
+                  );
                 }}
               />
             }

@@ -13,11 +13,14 @@ export default function OptionGroups(props) {
   const model = props.model;
   const stepInStore = model.steps.find((el) => el.id === step.id);
   return (
-    <div>
+    <div style={{width:"96%", margin:"auto"}}>
+      <Typography style={{ marginBottom: "20px" }}>
+        <b style={{ fontSize: "16px" }}> Option Groups </b>
+      </Typography>
       {step.option_groups !== undefined &&
         step.option_groups.map((option_group) => {
           const optionGroupInStore = stepInStore.option_groups.find(
-            (el) => el.id === option_group.id,
+            (el) => el.id === option_group.id
           );
           return (
             <div>

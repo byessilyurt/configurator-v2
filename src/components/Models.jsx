@@ -23,7 +23,7 @@ function Models() {
     const axiosPosts = async () => {
       setLoadingModels(true);
       const response = await axios(
-        "https://api.nimbusflorida.theonemarineturkey.com/models?_sort=sorting:asc",
+        "https://api.nimbusflorida.theonemarineturkey.com/models?_sort=sorting:asc"
       );
       setModels(response.data);
       setLoadingModels(false);
@@ -33,7 +33,7 @@ function Models() {
   const getModelDetail = async (model) => {
     setLoadingModel(true);
     const response = await axios(
-      `https://api.nimbusflorida.theonemarineturkey.com/models/byslug/${model.slug}`,
+      `https://api.nimbusflorida.theonemarineturkey.com/models/byslug/${model.slug}`
     );
     const modelDetail = response.data;
     modelStore.updateModel(modelDetail);
@@ -50,8 +50,7 @@ function Models() {
             <TableHead>
               <TableRow align="center">
                 <span style={{ fontSize: "24px" }}>
-                  {" "}
-                  Edit Your <b style={{ fontSize: "24px" }}>Nimbus</b>{" "}
+                  Edit Your <b style={{ fontSize: "24px" }}>Nimbus</b>
                 </span>
               </TableRow>
             </TableHead>

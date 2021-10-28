@@ -101,16 +101,6 @@ export default function Steps(props) {
                   >
                     <StepInfoForm step={step} model={model} />
                   </TabPanel>
-                  <Typography
-                    style={{
-                      marginLeft: "3%",
-                      marginTop: "1%",
-                      marginBottom: "2%",
-                      fontWeight: 600,
-                    }}
-                  >
-                    OPTION GROUPS
-                  </Typography>
                   <Box style={{ display: index === value ? "block" : "none" }}>
                     <OptionGroups step={step} model={model} />
                   </Box>

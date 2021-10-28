@@ -14,9 +14,12 @@ import "../styles/optionEditModal.css";
 import Dependency from "./Dependency";
 import PriceSelect from "./PriceSelect";
 import RelatedOptions from "./RelatedOptions";
+import { useModelStore } from "../modelContext";
 
 export default function OptionEditModal(props) {
-  const model = props.model;
+  const modelStore = useModelStore();
+  const model = modelStore.model;
+  const updateOptionDetail = modelStore.updateOptionDetail;
   const option = props.option;
   const option_group = props.option_group;
   const optionInStore = option_group.options.find((el) => el.id === option.id);
@@ -41,7 +44,7 @@ export default function OptionEditModal(props) {
       <IconButton aria-label="edit" onClick={handleClickOpen()}>
         <EditIcon />
       </IconButton>
-      <Dialog open={open} onClose={handleClose} fullWidth="true">
+      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
         <DialogTitle id="scroll-dialog-title">
           {optionInStore.title}
         </DialogTitle>
@@ -81,7 +84,13 @@ export default function OptionEditModal(props) {
             <TextField
               label="Title"
               onChange={(e) => {
-                optionInStore.title = e.target.value;
+                updateOptionDetail(
+                  option_group.step,
+                  option_group,
+                  option,
+                  "title",
+                  e.target.value
+                );
               }}
               value={optionInStore.title}
               variant="outlined"
@@ -90,7 +99,13 @@ export default function OptionEditModal(props) {
             <TextField
               label="Name"
               onChange={(e) => {
-                optionInStore.name = e.target.value;
+                updateOptionDetail(
+                  option_group.step,
+                  option_group,
+                  option,
+                  "name",
+                  e.target.value
+                );
               }}
               value={optionInStore.name}
               variant="outlined"
@@ -100,7 +115,13 @@ export default function OptionEditModal(props) {
               label="Sorting"
               type="number"
               onChange={(e) => {
-                optionInStore.sorting = e.target.value;
+                updateOptionDetail(
+                  option_group.step,
+                  option_group,
+                  option,
+                  "sorting",
+                  e.target.value
+                );
               }}
               value={optionInStore.sorting}
               variant="outlined"
@@ -110,7 +131,13 @@ export default function OptionEditModal(props) {
             <TextField
               label="Description"
               onChange={(e) => {
-                optionInStore.description = e.target.value;
+                updateOptionDetail(
+                  option_group.step,
+                  option_group,
+                  option,
+                  "description",
+                  e.target.value
+                );
               }}
               value={optionInStore.description}
               variant="outlined"
@@ -118,74 +145,104 @@ export default function OptionEditModal(props) {
             />
             <RelatedOptions optionInStore={optionInStore} steps={model.steps} />
             <Dependency optionInStore={optionInStore} steps={model.steps} />
-            <div></div>
-            <div className="form-control-label-container">
-              <FormControlLabel
-                className="form-control-label"
-                label="Required"
-                labelPlacement="top"
-                control={
-                  <Switch
-                    checked={optionInStore.required}
-                    onChange={(e, checked) => {
-                      optionInStore.required = e.target.checked;
-                    }}
-                  />
-                }
-              />
-              <FormControlLabel
-                className="form-control-label"
-                label="Selected"
-                labelPlacement="top"
-                control={
-                  <Switch
-                    checked={optionInStore.selected}
-                    onChange={(e, checked) => {
-                      optionInStore.selected = e.target.checked;
-                    }}
-                  />
-                }
-              />
-              <FormControlLabel
-                className="form-control-label"
-                label="Hidden"
-                labelPlacement="top"
-                control={
-                  <Switch
-                    checked={optionInStore.hidden}
-                    onChange={(e, checked) => {
-                      optionInStore.hidden = e.target.checked;
-                    }}
-                  />
-                }
-              />
-              <FormControlLabel
-                className="form-control-label"
-                label="Image Top"
-                labelPlacement="top"
-                control={
-                  <Switch
-                    checked={optionInStore.image_top}
-                    onChange={(e, checked) => {
-                      optionInStore.image_top = e.target.checked;
-                    }}
-                  />
-                }
-              />
-              <FormControlLabel
-                className="form-control-label"
-                label="Additional"
-                labelPlacement="top"
-                control={
-                  <Switch
-                    checked={optionInStore.additional}
-                    onChange={(e, checked) => {
-                      optionInStore.additional = e.target.checked;
-                    }}
-                  />
-                }
-              />
-            </div>
+          </div>
+          <div style={{margin:20}}></div>
+          <div className="form-control-label-container">
+            <FormControlLabel
+              className="form-control-label"
+              label="Required"
+              labelPlacement="top"
+              control={
+                <Switch
+                  checked={optionInStore.required}
+                  onChange={(e, checked) => {
+                    updateOptionDetail(
+                      option_group.step,
+                      option_group,
+                      option,
+                      "required",
+                      e.target.checked
+                    );
+                  }}
+                />
+              }
+            />
+            <FormControlLabel
+              className="form-control-label"
+              label="Selected"
+              labelPlacement="top"
+              control={
+                <Switch
+                  checked={optionInStore.selected}
+                  onChange={(e, checked) => {
+                    updateOptionDetail(
+                      option_group.step,
+                      option_group,
+                      option,
+                      "selected",
+                      e.target.checked
+                    );
+                  }}
+                />
+              }
+            />
+            <FormControlLabel
+              className="form-control-label"
+              label="Hidden"
+              labelPlacement="top"
+              control={
+                <Switch
+                  checked={optionInStore.hidden}
+                  onChange={(e, checked) => {
+                    updateOptionDetail(
+                      option_group.step,
+                      option_group,
+                      option,
+                      "hidden",
+                      e.target.checked
+                    );
+                  }}
+                />
+              }
+            />
+            <FormControlLabel
+              className="form-control-label"
+              label="Image Top"
+              labelPlacement="top"
+              control={
+                <Switch
+                  checked={optionInStore.image_top}
+                  onChange={(e, checked) => {
+                    updateOptionDetail(
+                      option_group.step,
+                      option_group,
+                      option,
+                      "image_top",
+                      e.target.checked
+                    );
+                  }}
+                />
+              }
+            />
+            <FormControlLabel
+              className="form-control-label"
+              label="Additional"
+              labelPlacement="top"
+              control={
+                <Switch
+                  checked={optionInStore.additional}
+                  onChange={(e, checked) => {
+                    updateOptionDetail(
+                      option_group.step,
+                      option_group,
+                      option,
+                      "additional",
+                      e.target.checked
+                    );
+                  }}
+                />
+              }
+            />
           </div>
         </DialogContent>
         <DialogActions>
