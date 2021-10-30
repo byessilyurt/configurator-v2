@@ -143,7 +143,9 @@ export default function OptionEditModal(props) {
               variant="outlined"
               InputLabelProps={{ shrink: true }}
             />
-            <RelatedOptions optionInStore={optionInStore} steps={model.steps} />
+          </div>
+          <div className="related-dependency-container">
+            <RelatedOptions optionInStore={optionInStore} steps={model.steps}/>
             <Dependency optionInStore={optionInStore} steps={model.steps} />
           </div>
           <div style={{margin:20}}></div>
@@ -246,7 +248,7 @@ export default function OptionEditModal(props) {
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>OK</Button>
+          <Button onClick={handleClose}>Close</Button>
         </DialogActions>
       </Dialog>
     </div>

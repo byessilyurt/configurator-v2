@@ -45,45 +45,48 @@ function Models() {
       {loadingModels ? (
         <Loading />
       ) : (
-        <Card className="card">
-          <Table>
-            <TableHead>
-              <TableRow align="center">
-                <span style={{ fontSize: "24px" }}>
-                  Edit Your <b style={{ fontSize: "24px" }}>Nimbus</b>
-                </span>
-              </TableRow>
-            </TableHead>
-            {loadingModel && <Loading />}
-            <TableBody>
-              <div className="models-info-container">
-                {models &&
-                  models.map((model) => {
-                    return (
-                      <TableCell
-                        key={model.id}
-                        className="models"
-                        onClick={() => {
-                          getModelDetail(model);
-                          setLoadingModel(true);
-                        }}
-                      >
-                        <div align="center">
-                          <img
-                            src={`https://api.nimbusflorida.theonemarineturkey.com/${model.picture.url}`}
-                            style={{ width: "60%", height: "30%" }}
-                          />
-                          <div style={{ textAlign: "center" }}>
-                            {model.name}
+        <div>
+          {loadingModel && <Loading />}
+          <Card className="card">
+            <Table>
+              <TableHead>
+                <TableRow align="center">
+                  <span style={{ fontSize: "24px" }}>
+                    Edit Your <b style={{ fontSize: "24px" }}>Nimbus</b>
+                  </span>
+                </TableRow>
+              </TableHead>
+
+              <TableBody>
+                <div className="models-info-container">
+                  {models &&
+                    models.map((model) => {
+                      return (
+                        <TableCell
+                          key={model.id}
+                          className="models"
+                          onClick={() => {
+                            getModelDetail(model);
+                            setLoadingModel(true);
+                          }}
+                        >
+                          <div align="center">
+                            <img
+                              src={`https://api.nimbusflorida.theonemarineturkey.com/${model.picture.url}`}
+                              style={{ width: "60%", height: "30%" }}
+                            />
+                            <div style={{ textAlign: "center" }}>
+                              {model.name}
+                            </div>
                           </div>
-                        </div>
-                      </TableCell>
-                    );
-                  })}
-              </div>
-            </TableBody>
-          </Table>
-        </Card>
+                        </TableCell>
+                      );
+                    })}
+                </div>
+              </TableBody>
+            </Table>
+          </Card>
+        </div>
       )}
       {clickedModel && (
         <div>

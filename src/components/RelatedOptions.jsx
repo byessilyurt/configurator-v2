@@ -4,7 +4,7 @@ import Select from "react-select";
 const RelatedOptions = (props) => {
   const steps = props.steps;
   const optionInStore = props.optionInStore;
-  const allOptionsInModel = [];
+  let allOptionsInModel = [];
   let relatedOptionsInStore = [];
   /* FINDS RELATED OPTIONS IN A MODEL, not working. 
   const findDefaultVal = () => {
@@ -22,11 +22,15 @@ const RelatedOptions = (props) => {
       if (step.option_groups) {
         step.option_groups.map((option_group) => {
           option_group.options.map((option) => {
-            allOptionsInModel.push(option);
+            if (option.id !== optionInStore.id) {
+              allOptionsInModel.push(option);
+            }
           });
         });
       }
     });
+
+    return allOptionsInModel;
   };
   const getRelatedOptionsInStore = () => {
     try {
@@ -44,11 +48,10 @@ const RelatedOptions = (props) => {
     getAllOptionsInModel();
     getRelatedOptionsInStore();
     return {};
-  }, []);
+  }, [{optionInStore}]);
   const handleChange = (selectedOptions) => {
     if (optionInStore.related_option != null)
       optionInStore.related_option.options = selectedOptions;
-    //console.log(optionInStore.related_option.options)
     return null;
   };
 

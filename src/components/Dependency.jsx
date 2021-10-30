@@ -11,7 +11,9 @@ function Dependency(props) {
       if (step.option_groups) {
         step.option_groups.map((option_group) => {
           option_group.options.map((option) => {
-            allOptionsInModel.push(option);
+            if (option.id !== optionInStore.id) {
+              allOptionsInModel.push(option);
+            }
           });
         });
       }
@@ -33,7 +35,7 @@ function Dependency(props) {
     getAllOptionsInModel();
     getDependentOptionsInStore();
     return {};
-  }, []);
+  }, [{optionInStore}]);
   const handleChange = (selectedOptions) => {
     optionInStore.dependency.options = selectedOptions;
     //console.log(optionInStore.dependency.options)
