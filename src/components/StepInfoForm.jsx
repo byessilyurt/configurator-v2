@@ -65,6 +65,7 @@ function StepInfoForm(props) {
           onChange={(e) => {
             updateStepDetail(stepInStore, "sorting", e.target.value);
           }}
+          onWheel={(e) => e.target.blur()}
           value={step.sorting}
           variant="outlined"
         ></TextField>

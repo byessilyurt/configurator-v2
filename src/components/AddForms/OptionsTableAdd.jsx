@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function OptionsTable() {
+function OptionsTableAdd() {
   const [optionsCount, setOptionsCount] =useState()
   return (
     <div>
@@ -9,4 +9,4 @@ function OptionsTable() {
   )
 }
 
-export default OptionsTable
+export default OptionsTableAdd

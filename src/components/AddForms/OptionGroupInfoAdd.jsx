@@ -1,19 +1,37 @@
+import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
-import FormControl from "@mui/material/FormControl";
+import TextField from "@mui/material/TextField";
+import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Switch from "@mui/material/Switch";
-import TextField from "@mui/material/TextField";
 import { useObserver } from "mobx-react";
-import "../styles/optionGroupInfoForm.css";
-import { useModelStore } from "../modelContext";
+import { useModelStore } from "../../modelContext";
 
-function OptionGroupInfoForm(props) {
+function OptionGroupInfoAdd(props) {
+  const ID = props.ID;
+  const step = props.step;
   const modelStore = useModelStore();
   const updateOptionGroupDetail = modelStore.updateOptionGroupDetail;
-  const option_group = props.option_group;
+  const option_group = step.option_groups.find((el) => el.id === ID)
+  const model = modelStore.model;
+  const [optionGroupInfo, setOptionGroupInfo] = useState({
+    id: ID,
+    name: "",
+    title: "",
+    grid_size: "",
+    type: "",
+    sorting: undefined,
+    description: "",
+    group_title: "",
+    show_group_title: false,
+    required: false,
+    hide_title: false,
+    has_additional: false,
+  });
+
   return useObserver(() => (
     <Card
       className="card"
@@ -28,7 +46,7 @@ function OptionGroupInfoForm(props) {
         <TextField
           className="option-group-form"
           label="ID"
-          value={option_group.id}
+          value={optionGroupInfo.id}
           disabled
           variant="outlined"
           InputLabelProps={{ shrink: true }}
@@ -38,7 +56,7 @@ function OptionGroupInfoForm(props) {
           label="Name"
           onChange={(e) => {
             updateOptionGroupDetail(
-              option_group.step,
+              step.id,
               option_group,
               "name",
               e.target.value
@@ -53,7 +71,7 @@ function OptionGroupInfoForm(props) {
           label="Title"
           onChange={(e) => {
             updateOptionGroupDetail(
-              option_group.step,
+              step.id,
               option_group,
               "title",
               e.target.value
@@ -69,14 +87,14 @@ function OptionGroupInfoForm(props) {
           label="Grid Size"
           onChange={(e) => {
             updateOptionGroupDetail(
-              option_group.step,
+              step.id,
               option_group,
               "grid_size",
               e.target.value
             );
           }}
-          onWheel={(e) => e.target.blur()}
           value={option_group.grid_size}
+          onWheel={(e) => e.target.blur()}
           variant="outlined"
           InputLabelProps={{ shrink: true }}
         />
@@ -86,14 +104,14 @@ function OptionGroupInfoForm(props) {
           label="Sorting"
           onChange={(e) => {
             updateOptionGroupDetail(
-              option_group.step,
+              step.id,
               option_group,
               "sorting",
               e.target.value
             );
           }}
-          onWheel={(e) => e.target.blur()}
           value={option_group.sorting}
+          onWheel={(e) => e.target.blur()}
           variant="outlined"
           InputLabelProps={{ shrink: true }}
         />
@@ -102,16 +120,16 @@ function OptionGroupInfoForm(props) {
           <Select
             labelId="type"
             id="demo-simple-select-helper"
-            value={option_group.type}
             label="Age"
             onChange={(e) => {
               updateOptionGroupDetail(
-                option_group.step,
+                step.id,
                 option_group,
                 "type",
                 e.target.value
               );
             }}
+            value={option_group.type}
           >
             <MenuItem value={"single"}>Single</MenuItem>
             <MenuItem value={"multi"}>Multi</MenuItem>
@@ -130,7 +148,7 @@ function OptionGroupInfoForm(props) {
                 checked={option_group.required}
                 onChange={(e, checked) => {
                   updateOptionGroupDetail(
-                    option_group.step,
+                    step.id,
                     option_group,
                     "required",
                     e.target.checked
@@ -145,15 +163,15 @@ function OptionGroupInfoForm(props) {
             labelPlacement="top"
             control={
               <Switch
-                checked={option_group.hide_title}
-                onChange={(e, checked) => {
-                  updateOptionGroupDetail(
-                    option_group.step,
-                    option_group,
-                    "hide_title",
-                    e.target.checked
-                  );
-                }}
+              checked={option_group.hide_title}
+              onChange={(e, checked) => {
+                updateOptionGroupDetail(
+                  step.id,
+                  option_group,
+                  "hide_title",
+                  e.target.checked
+                );
+              }}
               />
             }
           />
@@ -163,15 +181,15 @@ function OptionGroupInfoForm(props) {
             labelPlacement="top"
             control={
               <Switch
-                checked={option_group.has_additional}
-                onChange={(e, checked) => {
-                  updateOptionGroupDetail(
-                    option_group.step,
-                    option_group,
-                    "has_additional",
-                    e.target.checked
-                  );
-                }}
+              checked={option_group.has_additional}
+              onChange={(e, checked) => {
+                updateOptionGroupDetail(
+                  step.id,
+                  option_group,
+                  "has_additional",
+                  e.target.checked
+                );
+              }}
               />
             }
           />
@@ -181,7 +199,7 @@ function OptionGroupInfoForm(props) {
           label="Description"
           onChange={(e) => {
             updateOptionGroupDetail(
-              option_group.step,
+              step.id,
               option_group,
               "description",
               e.target.value
@@ -199,7 +217,7 @@ function OptionGroupInfoForm(props) {
             label="Group Title"
             onChange={(e) => {
               updateOptionGroupDetail(
-                option_group.step,
+                step.id,
                 option_group,
                 "group_title",
                 e.target.value
@@ -216,9 +234,9 @@ function OptionGroupInfoForm(props) {
             control={
               <Switch
                 checked={option_group.show_group_title}
-                onChange={(e, checked) => {
+                onChange={(e,checked) => {
                   updateOptionGroupDetail(
-                    option_group.step,
+                    step.id,
                     option_group,
                     "show_group_title",
                     e.target.checked
@@ -232,4 +250,5 @@ function OptionGroupInfoForm(props) {
     </Card>
   ));
 }
-export default OptionGroupInfoForm;
+
+export default OptionGroupInfoAdd;

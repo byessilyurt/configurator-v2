@@ -5,7 +5,10 @@
   font-weight: 300;
   font-size: 13px;
 }
-
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent; 
+}
 .App {
   text-align: center;
 }

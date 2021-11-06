@@ -64,6 +64,7 @@ function ModelInfoForm(props) {
           onChange={(e) => {
             updateModelDetail("sorting", e.target.value);
           }}
+          onWheel={(e) => e.target.blur()}
           value={model.sorting}
         ></TextField>
         <TextField
@@ -79,6 +80,7 @@ function ModelInfoForm(props) {
               e.target.value
             );
           }}
+          onWheel={(e) => e.target.blur()}
           value={model.starting_from.usd}
         ></TextField>
         <TextField

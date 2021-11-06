@@ -5,7 +5,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Typography from "@material-ui/core/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import React, { useState } from "react";
-import Step from "./AddForms/Step";
+import StepInfoAdd from "./AddForms/StepInfoAdd";
 import OptionGroups from "./OptionGroups";
 import StepInfoForm from "./StepInfoForm";
 
@@ -28,8 +28,6 @@ export default function Steps(props) {
   const [value, setValue] = useState(0);
   const [buttonActive, setButtonActive] = useState(false);
   const buttonColor = buttonActive ? "#3F51B5" : "#fafafa";
-  const textColor = buttonActive ? "white" : "#3F51B5";
-  const iconColor = buttonActive ? "white" : "#3F51B5";
   function handleChange(event, newValue) {
     setValue(newValue);
   }
@@ -87,7 +85,7 @@ export default function Steps(props) {
         )}
       </Tabs>
       {buttonActive ? (
-        <Step model={model} />
+        <StepInfoAdd />
       ) : model ? (
         model.steps.map((step, index) => {
           return (

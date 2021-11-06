@@ -8,6 +8,7 @@ import { useObserver } from "mobx-react";
 import React from "react";
 import "../styles/options.css";
 import OptionEditModal from "./OptionEditModal";
+import OptionModalAdd from "./AddForms/OptionModalAdd";
 
 function createData(
   title,
@@ -17,7 +18,7 @@ function createData(
   required,
   price,
   pictureURL,
-  selected,
+  selected
 ) {
   return { title, name, id, sorting, required, price, pictureURL, selected };
 }
@@ -25,7 +26,7 @@ function Options(props) {
   const option_group = props.option_group;
   const model = props.model;
   let setRows = new Set();
-  option_group.options.map((option) => {
+  option_group.options?.map((option) => {
     return setRows.add(
       createData(
         option.title,
@@ -35,8 +36,8 @@ function Options(props) {
         option.required,
         option.price.usd,
         option.picture.url,
-        option.selected,
-      ),
+        option.selected
+      )
     );
   });
   return useObserver(() => (
@@ -44,14 +45,17 @@ function Options(props) {
       <Table className="options-table">
         <TableHead>
           <TableRow>
-            <TableCell style={{fontWeight:600, fontSize:14}}>
-              {option_group.title.toString().split(" ").map((e) => {
-                return (
-                  e.toLowerCase().charAt(0).toUpperCase() +
-                  e.slice(1).toLowerCase() +
-                  " "
-                );
-              })}
+            <TableCell style={{ fontWeight: 600, fontSize: 14 }}>
+              {option_group.title
+                .toString()
+                .split(" ")
+                .map((e) => {
+                  return (
+                    e.toLowerCase().charAt(0).toUpperCase() +
+                    e.slice(1).toLowerCase() +
+                    " "
+                  );
+                })}
             </TableCell>
             <TableCell>ID</TableCell>
             <TableCell>Price</TableCell>
@@ -82,6 +86,17 @@ function Options(props) {
               </TableCell>
             </TableRow>
           ))}
+          <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+            <TableCell component="th" scope="row">
+              Add Option
+            </TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
+            <TableCell>
+              <OptionModalAdd option_group={option_group} />
+            </TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>

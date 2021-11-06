@@ -1,11 +1,11 @@
 import React from 'react'
 import { createModelStore } from './modelStore'
-import { useLocalStore } from 'mobx-react'
+import { useLocalObservable } from 'mobx-react'
 
 const ModelContext = React.createContext(null)
 
 export const ModelProvider = ({children}) => {
-  const modelStore = useLocalStore(createModelStore)
+  const modelStore = useLocalObservable(createModelStore)
 
   return <ModelContext.Provider value={modelStore}>
     {children}

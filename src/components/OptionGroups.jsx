@@ -7,13 +7,19 @@ import * as React from "react";
 import "../styles/optionGroups.css";
 import OptionGroupInfoForm from "./OptionGroupInfoForm";
 import Options from "./Options.jsx";
+import OptionGroupAdd from "./AddForms/OptionGroupAdd";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useModelStore } from "../modelContext";
 
 export default function OptionGroups(props) {
   const step = props.step;
-  const model = props.model;
+  const modelStore = useModelStore();
+  const model = modelStore.model;
+  const removeOptionGroup = modelStore.removeOptionGroup;
   const stepInStore = model.steps.find((el) => el.id === step.id);
   return (
-    <div style={{width:"96%", margin:"auto"}}>
+    <div style={{ width: "96%", margin: "auto" }}>
       <Typography style={{ marginBottom: "20px" }}>
         <b style={{ fontSize: "16px" }}> Option Groups </b>
       </Typography>
@@ -29,9 +35,28 @@ export default function OptionGroups(props) {
                   expandIcon={<ExpandMoreIcon />}
                   sx={{ border: "none", outline: "none" }}
                 >
-                  <Typography className="option-group-title">
-                    {optionGroupInStore.title.toLowerCase()}
+                  <Typography
+                    className="option-group-title"
+                    style={{ margin: "auto" }}
+                  >
+                    {optionGroupInStore.title.length > 0
+                      ? optionGroupInStore.title.toLowerCase()
+                      : "Type title"}
                   </Typography>
+                  <IconButton
+                    aria-label="delete"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      removeOptionGroup(
+                        step,
+                        step.option_groups.find(
+                          (el) => el.id === optionGroupInStore.id
+                        )
+                      );
+                    }}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
                 </AccordionSummary>
                 <AccordionDetails>
                   <OptionGroupInfoForm option_group={optionGroupInStore} />
@@ -41,6 +66,7 @@ export default function OptionGroups(props) {
             </div>
           );
         })}
+      <OptionGroupAdd step={stepInStore} />
     </div>
   );
 }
