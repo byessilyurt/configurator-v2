@@ -1,3 +1,13 @@
+Content Management System for a Yacht Configurator 
+
+Allow admins to add a new yacht or edit the existing ones.
+Each yacht has tens of different specifications under 6 main titles (Engine, exterior, interior, entertainment, safety&security, extra add-ons)
+
+Admin choose the yacht s/he wants to make changes on, then all data about the yacht fetched from the API and listed in different categories in filled input fields. If any changes applied, admin can save it and changes are sent to the API. 
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
